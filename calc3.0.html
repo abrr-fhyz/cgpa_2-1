@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calc_v2.0</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .slider-container {
+        margin-bottom: 20px;
+    }
+    .slider {
+        width: 100%;
+        height: 15px;
+    }
+    .slider::-webkit-slider-thumb,
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+    .small-slider-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .small-slider {
+        width: 48%; 
+    }
+    .value-display {
+        font-size: 18px;
+        color: black;
+        font-weight: bold;
+    }
+    .value-box {
+        position: fixed; 
+        bottom: 10px; 
+        left: 50%;
+        transform: translateX(-50%); 
+        width: calc(100% - 20px); 
+        max-width: 800px; 
+        padding: 5px;
+        background-color: lightblue;
+        border: 5px solid #000;
+        border-radius: 5px;
+        text-align: center;
+        color: black;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+        z-index: 100; 
+        margin-bottom: 0; 
+    }
+    .container1 {
+        width: 98%;
+        background-color: #f0f0f0; 
+        padding: 5px; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        margin-bottom: 10px; 
+        margin: auto 0px;
+    }
+    body {
+        padding-bottom: 200px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1 style="text-align: center;">CGPA Calculator for 2-2</h1>
+<hr style="border-top: 5px solid #000;">
+
+<div class="slider-container">
+    <input type="range" min="200" max="400" value="400" class="slider" id="prev_cg">
+    <div class="container1">
+        <h2> </h2>
+        <h3 style="text-align: center;">Previous Semesters' CGPA: </h3>
+        <div id="prev_cg_val" class="value-display"></div>
+        <h2> </h2>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2201 & 2211: <i>Database Management Systems I</i></h2>
+    <div class="small-slider-container">
+        <input type="range" min="0" max="70" value="70" class="slider small-slider" id="sub1T">
+        <input type="range" min="0" max="30" value="30" class="slider small-slider" id="sub1I">
+        <input type="range" min="8" max="16" value="16" class="slider small-slider" id="sub1L">
+    </div>
+    <div class="container1">
+    	<h3>  </h3>
+        <h3 style="font-family: Arial;"> Final:</h3>
+        <div id="sub1_t" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Incourse:</h3>
+        <div id="sub1_i" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Theory GPA:</h3>
+        <div id="sub1_val" class="value-display">4.00</div>
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Lab GPA:</h3>
+        <div id="sub1_l" class="value-display"></div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2202 & 2212: <i>Design and Analysis of Algorithms I</i></h2>
+    <div class="small-slider-container">
+        <input type="range" min="0" max="70" value="70" class="slider small-slider" id="sub2T">
+        <input type="range" min="0" max="30" value="30" class="slider small-slider" id="sub2I">
+        <input type="range" min="8" max="16" value="16" class="slider small-slider" id="sub2L">
+    </div>
+    <div class="container1">
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Final:</h3>
+        <div id="sub2_t" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Incourse:</h3>
+        <div id="sub2_i" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Theory GPA:</h3>
+        <div id="sub2_val" class="value-display">4.00</div>
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Lab GPA:</h3>
+        <div id="sub2_l" class="value-display"></div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2203 & 2213: <i>Data and Telecommunication</i></h2>
+    <div class="small-slider-container">
+        <input type="range" min="0" max="70" value="70" class="slider small-slider" id="sub3T">
+        <input type="range" min="0" max="30" value="30" class="slider small-slider" id="sub3I">
+        <input type="range" min="8" max="16" value="16" class="slider small-slider" id="sub3L">
+    </div>
+    <div class="container1">
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Final:</h3>
+        <div id="sub3_t" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Incourse:</h3>
+        <div id="sub3_i" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Theory GPA:</h3>
+        <div id="sub3_val" class="value-display">4.00</div>
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Lab GPA:</h3>
+        <div id="sub3_l" class="value-display"></div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2204: <i>Computer Architechture and Organization</i></h2>
+    <div class="small-slider-container" style="display: flex; justify-content: center;">
+        <input type="range" min="0" max="70" value="70" class="slider small-slider" id="sub4T">
+        <input type="range" min="0" max="30" value="30" class="slider small-slider" id="sub4I"> 
+    </div>
+    <div class="container1">
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Final:</h3>
+        <div id="sub4_t" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Incourse:</h3>
+        <div id="sub4_i" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Theory GPA:</h3>
+        <div id="sub4_val" class="value-display">4.00</div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2205: <i>Intoduction to Mechatronics</i></h2>
+    <div class="small-slider-container" style="display: flex; justify-content: center;">
+        <input type="range" min="0" max="70" value="70" class="slider small-slider" id="sub5T">
+        <input type="range" min="0" max="30" value="30" class="slider small-slider" id="sub5I">  
+    </div>
+    <div class="container1">
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Final:</h3>
+        <div id="sub5_t" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Incourse:</h3>
+        <div id="sub5_i" class="value-display"></div>
+        <h3 style="font-family: Arial;"> Theory GPA:</h3>
+        <div id="sub5_val" class="value-display">4.00</div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="course-section">
+    <h2 style="text-align: center;">CSE 2216: <i>Application Development Lab</i></h2>
+    <div class="small-slider-container" style="display: flex; justify-content: center;">
+        <input type="range" min="8" max="16" value="16" class="slider small-slider" id="sub6L">  
+    </div>
+    <div class="container1">
+        <h3>  </h3>
+        <h3 style="font-family: Arial;"> Lab GPA:</h3>
+        <div id="sub6_l" class="value-display">4.00</div>
+        <h3>  </h3>
+    </div>
+</div>
+
+<div class="value-box">
+    <h2>This semester GPA:</h2>
+    <div id="cgpa_val" class="value-display" style="font-size: 25px; color: darkblue;">4.00</div>
+    <h3>Final CGPA:</h3>
+    <div id="cgpaFinal_val" class="value-display" style="font-size: 20px; color: darkblue;">4.00</div>
+</div>
+
+</div>
+
+<script>
+    //variables
+    let cgpa = 0;
+    var slider1 = document.getElementById("prev_cg");
+    var CG = document.getElementById("prev_cg_val");
+    //sub1
+    var sub1T_slider = document.getElementById("sub1T");
+    var sub1T_slider_value = document.getElementById("sub1_t");
+    var sub1L_slider = document.getElementById("sub1L");
+    var sub1L_slider_value = document.getElementById("sub1_l");
+    var sub1I_slider = document.getElementById("sub1I");
+    var sub1I_slider_value = document.getElementById("sub1_i");
+    var sub1Grade = document.getElementById("sub1_val");
+    //sub2
+    var sub2T_slider = document.getElementById("sub2T");
+    var sub2T_slider_value = document.getElementById("sub2_t");
+    var sub2L_slider = document.getElementById("sub2L");
+    var sub2L_slider_value = document.getElementById("sub2_l");
+    var sub2I_slider = document.getElementById("sub2I");
+    var sub2I_slider_value = document.getElementById("sub2_i");
+    var sub2Grade = document.getElementById("sub2_val");
+    //sub3
+    var sub3T_slider = document.getElementById("sub3T");
+    var sub3T_slider_value = document.getElementById("sub3_t");
+    var sub3L_slider = document.getElementById("sub3L");
+    var sub3L_slider_value = document.getElementById("sub3_l");
+    var sub3I_slider = document.getElementById("sub3I");
+    var sub3I_slider_value = document.getElementById("sub3_i");
+    var sub3Grade = document.getElementById("sub3_val");
+    //sub4
+    var sub4T_slider = document.getElementById("sub4T");
+    var sub4T_slider_value = document.getElementById("sub4_t");
+    var sub4I_slider = document.getElementById("sub4I");
+    var sub4I_slider_value = document.getElementById("sub4_i");
+    var sub4Grade = document.getElementById("sub4_val");
+    //sub5
+    var sub5T_slider = document.getElementById("sub5T");
+    var sub5T_slider_value = document.getElementById("sub5_t");
+    var sub5I_slider = document.getElementById("sub5I");
+    var sub5I_slider_value = document.getElementById("sub5_i");
+    var sub5Grade = document.getElementById("sub5_val");
+    //sub6
+    var sub6L_slider = document.getElementById("sub6L");
+    var sub6L_slider_value = document.getElementById("sub6_l");
+
+
+    //functions
+    function updateValueDisplayMain(slider, valueDisplay) {
+    	valueDisplay.textContent = slider.value / 100;
+        if (slider.value % 100 === 0 || slider.value % 10 === 0) valueDisplay.textContent = (slider.value / 100).toFixed(2);
+    }
+    function updateValue(slider, valueDisplay) {
+    	valueDisplay.textContent = slider.value;
+    }
+    function updateValueDisplay(slider, valueDisplay) {
+    	valueDisplay.textContent = slider.value / 4;
+        if (slider.value % 1 === 0) valueDisplay.textContent = (slider.value / 4).toFixed(2);
+    }
+
+    function setUp(subject_slider, subject_slider_value, subject_incourse, subject_grade) {
+    	updateValue(subject_slider, subject_slider_value);
+        updateGrade(subject_grade, subject_slider, subject_incourse);
+        cgpa_finder();
+    }
+    function setUp2(subject_slider, subject_incourse_value, subject_incourse, subject_grade) {
+        updateValue(subject_incourse, subject_incourse_value);
+        updateGrade(subject_grade, subject_slider, subject_incourse);
+        cgpa_finder();
+    }
+    function setUp3(subject_slider, subject_slider_value) {
+        updateValueDisplay(subject_slider, subject_slider_value);
+        cgpa_finder();
+    }
+
+    function updateGrade(valueDisplay, final, incourse) {
+        let total = parseFloat(final.value) + parseFloat(incourse.value);
+        if(total >= 80) total = 4;
+        else if(total >= 75) total = 3.75;
+        else if(total >= 70) total = 3.5;
+        else if(total >= 65) total = 3.25;
+        else if(total >= 60) total = 3;
+        else if(total >= 55) total = 2.75;
+        else if(total >= 50) total = 2.5;
+        else if(total >= 45) total = 2.25;
+        else if(total >= 40) total = 2.00;
+        else total = 0;
+        valueDisplay.textContent = total.toFixed(2);
+    }
+
+    function cgpa_finder() {
+        let cg = parseFloat(this.CG.textContent);
+        let sub1T = parseFloat(this.sub1Grade.textContent);
+        let sub1L = parseFloat(this.sub1L_slider_value.textContent);
+        let sub2T = parseFloat(this.sub2Grade.textContent);
+        let sub2L = parseFloat(this.sub2L_slider_value.textContent);
+        let sub3T = parseFloat(this.sub3Grade.textContent);
+        let sub3L = parseFloat(this.sub3L_slider_value.textContent);
+        let sub4T = parseFloat(this.sub4Grade.textContent);
+        let sub5T = parseFloat(this.sub5Grade.textContent);
+        let sub6L = parseFloat(this.sub6L_slider_value.textContent);
+        this.cgpa = sub1T*3 + sub1L*1.5 + sub2T*3 + sub2L*1.5 + sub3T*3 + sub3L*0.75 + sub4T*3 + sub5T*2 + sub6L*1.5;
+        this.cgpa /= (3*5 + 2.75 + 1.5);
+        this.cgpa_val.textContent = this.cgpa.toFixed(2);
+        this.cgpa *= 19.25;
+        this.cgpa += cg*55.75;
+        this.cgpa /= (19.25 + 55.75);
+        console.log("The app is working ...");
+        this.cgpaFinal_val.textContent = this.cgpa.toFixed(2);
+    }
+
+
+    //output or just fix what the listeners are doing
+    prev_cg.addEventListener("input", function() {
+        updateValueDisplayMain(slider1, CG);
+        cgpa_finder();
+    });
+    sub1T.addEventListener("input", function() {setUp(sub1T_slider, sub1T_slider_value, sub1I_slider, sub1Grade);});
+    sub1I.addEventListener("input", function() {setUp2(sub1T_slider, sub1I_slider_value, sub1I_slider, sub1Grade);});
+    sub2T.addEventListener("input", function() {setUp(sub2T_slider, sub2T_slider_value, sub2I_slider, sub2Grade);});
+    sub2I.addEventListener("input", function() {setUp2(sub2T_slider, sub2I_slider_value, sub2I_slider, sub2Grade);});
+    sub3T.addEventListener("input", function() {setUp(sub3T_slider, sub3T_slider_value, sub3I_slider, sub3Grade);});
+    sub3I.addEventListener("input", function() {setUp2(sub3T_slider, sub3I_slider_value, sub3I_slider, sub3Grade);});
+    sub4T.addEventListener("input", function() {setUp(sub4T_slider, sub4T_slider_value, sub4I_slider, sub4Grade);});
+    sub4I.addEventListener("input", function() {setUp2(sub4T_slider, sub4I_slider_value, sub4I_slider, sub4Grade);});
+    sub5T.addEventListener("input", function() {setUp(sub5T_slider, sub5T_slider_value, sub5I_slider, sub5Grade);});
+    sub5I.addEventListener("input", function() {setUp2(sub5T_slider, sub5I_slider_value, sub5I_slider, sub5Grade);});
+    sub1L.addEventListener("input", function() {setUp3(sub1L_slider, sub1L_slider_value);});
+    sub2L.addEventListener("input", function() {setUp3(sub2L_slider, sub2L_slider_value);});
+    sub3L.addEventListener("input", function() {setUp3(sub3L_slider, sub3L_slider_value);});
+    sub6L.addEventListener("input", function() {setUp3(sub6L_slider, sub6L_slider_value);});
+    //final update
+    updateValueDisplayMain(prev_cg, CG);
+    updateValue(sub1T, sub1T_slider_value);
+    updateValue(sub1I, sub1I_slider_value);
+    updateValueDisplay(sub1L, sub1L_slider_value);
+    updateValue(sub2T, sub2T_slider_value);
+    updateValue(sub2I, sub2I_slider_value);
+    updateValueDisplay(sub2L, sub2L_slider_value);
+    updateValue(sub3T, sub3T_slider_value);
+    updateValue(sub3I, sub3I_slider_value);
+    updateValueDisplay(sub3L, sub3L_slider_value);
+    updateValue(sub4T, sub4T_slider_value);
+    updateValue(sub4I, sub4I_slider_value);
+    updateValue(sub5T, sub5T_slider_value);
+    updateValue(sub5I, sub5I_slider_value);
+    updateValueDisplay(sub6L, sub6L_slider_value);
+</script>
+
+</body>
+</html>
